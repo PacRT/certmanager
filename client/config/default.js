@@ -14,7 +14,7 @@ module.exports =
         requestCert: true,
         rejectUnauthorized: true,
         //ca: [file('crypto_objects/certs/root-ca.crt'), file('crypto_objects/certs/tls-ca.crt')]
-        ca: [file('crypto_objects/certs/root-ca.crt'), file('../pki/ca/tls-ca.crt')]
+        ca: [file('../pki/ca/root-ca.crt'), file('../pki/ca/tls-ca.crt')]
     },
 
     mqtt:
