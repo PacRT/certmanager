@@ -25,7 +25,7 @@ var options = {
     //The CA list will be used to determine if server is authorized
     //ca: '/home/ubuntu/codes/pki-example-3/ca/tls-ca-chain.pem'
 };
-var client  = mqtt.connect(conf.mqtts.server, options);
+var client  = mqtt.connect('mqtts://pacrt.io', conf.mqtts);
 
 client.subscribe('/strmv1/certreq');
 
