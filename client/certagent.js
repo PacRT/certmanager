@@ -27,8 +27,6 @@ var profile = {nodeid: 'mynodeid', pass: 'pass'}
 
 var csrcmdtmpl = 'openssl req -new -config ../pki/etc/client.conf -out ../pki/certs/{nodeid}.csr -keyout ../pki/certs/{nodeid}.key -subj "/C=US/O=PacRT/OU=PacRT Hardware/CN={nodeid}" -passout pass:{pass}';
 
-delete profile.pass
-
 client.subscribe('/strmv1/gencert/cert/' + '{nodeid}', profile);
 
 client.on('message', function(topic, message, packet) {
@@ -39,6 +37,7 @@ client.on('message', function(topic, message, packet) {
 });
 
 var csrcmd = format(csrcmdtmpl, profile);
+delete profile.pass
 execsync(csrcmd, puts);
 var keypath = format('../pki/certs/{nodeid}.key', profile);
 var key = fs.readFileSync(keypath);
