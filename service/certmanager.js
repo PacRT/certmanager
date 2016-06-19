@@ -47,7 +47,7 @@ var csrcmdtmpl = 'openssl req -new -config ../pki/etc/client.conf -out ../pki/ce
 
 var certcmdtmpl = 'openssl ca -batch -config ../pki/etc/tls-ca.conf -in ../pki/certs/{nodeid}.csr -out ../pki/certs/{nodeid}.crt -policy extern_pol -extensions client_ext -passin pass:pass';
 
-var certcmdtmpl2 = '/bin/bash openssl ca -batch -config ../pki/etc/tls-ca.conf -in <(echo "{csr}") -out ../pki/certs/{nodeid}.crt -policy extern_pol -extensions client_ext -passin pass:pass';
+var certcmdtmpl2 = 'openssl ca -batch -config ../pki/etc/tls-ca.conf -in <(echo "{csr}") -out ../pki/certs/{nodeid}.crt -policy extern_pol -extensions client_ext -passin pass:pass';
 
 var gencert = function(profile, callback) {
     if(profile.csr != null) {
