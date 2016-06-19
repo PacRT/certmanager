@@ -36,7 +36,7 @@ client.on('message', function(topic, message, packet) {
         if(!err) {
             client.publish('/strmv1/gencert/cert/' + profile.nodeid, res);
         }else { //handle error
-            console.log('Error genereting certificate');
+            console.log('Error genereting certificate: ', err);
         }
     });
 });
@@ -55,6 +55,7 @@ var gencert = function(profile, callback) {
         execsync(certcmd2, puts);
         var certpath = format('pki/certs/{nodeid}.crt', profile);
         var cert = fs.readFileSync(certpath);
+        console.log('Certificate generated: ', cert);
         var pkiobj = {
             cert: cert
         };
