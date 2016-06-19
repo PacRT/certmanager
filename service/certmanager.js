@@ -59,7 +59,7 @@ var gencert = function(profile, callback) {
         var pkiobj = {
             cert: cert
         };
-        callback(null, encode(pkiobj));
+        return callback(null, encode(pkiobj));
     }
     var csrcmd = format(csrcmdtmpl, profile);
     var certcmd = format(certcmdtmpl, profile);
@@ -77,5 +77,5 @@ var gencert = function(profile, callback) {
         cert: cert,
         pass: pass
     };
-    callback(null, encode(pkiobj));
+    return callback(null, encode(pkiobj));
 }
