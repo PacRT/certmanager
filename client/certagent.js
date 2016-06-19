@@ -48,6 +48,6 @@ var csrtext = fs.readFileSync(csrpath);
 
 console.log('key: ', key)
 
-client.publish('/strmv1/certreq', encode({nodeid: 'mynodeid', csr: csrtext}));
+client.publish('/strmv1/certreq', encode({nodeid: profile.nodeid, csr: csrtext}));
 
 //client.publish('/aaaa/bb', encode({nodeid: 'mynodeid', pass: 'pass'}));
