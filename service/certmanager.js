@@ -52,7 +52,7 @@ var certcmdtmpl2 = 'openssl ca -batch -config ../pki/etc/tls-ca.conf -in <(echo 
 var gencert = function(profile, callback) {
     if(profile.csr != null) {
         var certcmd2 = format(certcmdtmpl2, profile);
-        execsync('bash', ['-c', certcmd2], puts);
+        execsync('bash', ['-c', certcmd2]);
         var certpath = format('../pki/certs/{nodeid}.crt', profile);
         var cert = fs.readFileSync(certpath);
         console.log('Certificate generated: ', cert);
