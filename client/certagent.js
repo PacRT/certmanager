@@ -27,7 +27,7 @@ var profile = {nodeid: 'mynodeid', pass: 'pass'}
 
 var csrcmdtmpl = 'openssl req -new -config ../pki/etc/client.conf -out ../pki/certs/{nodeid}.csr -keyout ../pki/certs/{nodeid}.key -subj "/C=US/O=PacRT/OU=PacRT Hardware/CN={nodeid}" -passout pass:{pass}';
 
-client.subscribe('/strmv1/gencert/cert/' + '{nodeid}', profile);
+client.subscribe(format('/strmv1/gencert/cert/' + '{nodeid}', profile));
 
 client.on('message', function(topic, message, packet) {
     var msg = decode(message);
