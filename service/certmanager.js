@@ -33,7 +33,9 @@ client.on('message', function(topic, message, packet) {
     var profile = decode(message);
     console.log('Message on topic certreq: ', profile);
     gencert(profile, function(err, res) {
+        console.log('on-message - err: ', err, ' res: ', res)
         if(!err) {
+            console.log('on-message - no error - publishing.... ');
             client.publish('/strmv1/gencert/cert/' + profile.nodeid, res);
         }else { //handle error
             console.log('Error genereting certificate: ', err);
