@@ -65,7 +65,7 @@ var gencert = function(profile, callback) {
             };
             return callback(null, encode(pkiobj));
         } catch (e) {
-            console.log('Error is: ', e);
+            console.log('Error is: ' + e);
             return callback(e);
         }
     }
