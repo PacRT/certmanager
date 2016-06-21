@@ -29,6 +29,8 @@ var csrcmdtmpl = 'openssl req -new -config ../pki/etc/client.conf -out ../pki/ce
 
 client.subscribe(format('/strmv1/gencert/cert/' + '{nodeid}', profile));
 
+client.subscribe(format('/strmv1/gencert/cert/err/' + '{nodeid}', profile));
+
 client.on('message', function(topic, message, packet) {
     var msg = decode(message);
     console.log('Message on topic: ', topic, "----", msg);
