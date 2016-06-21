@@ -38,7 +38,7 @@ client.on('message', function(topic, message, packet) {
             console.log('on-message - no error - publishing.... ');
             client.publish('/strmv1/gencert/cert/' + profile.nodeid, res);
         }else { //handle error
-            client.publish('/strmv1/gencert/cert/err/' + profile.nodeid, {error: err})
+            client.publish('/strmv1/gencert/cert/err/' + profile.nodeid, encode({error: err}))
             console.log('Error genereting certificate: ', err);
         }
     });
