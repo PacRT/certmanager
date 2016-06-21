@@ -32,8 +32,10 @@ client.subscribe(format('/strmv1/gencert/cert/' + '{nodeid}', profile));
 client.on('message', function(topic, message, packet) {
     var msg = decode(message);
     console.log('Message on topic: ', topic, "----", msg);
-    var certpath = format('../pki/certs/{nodeid}__.crt', profile);
-    fs.writeFileSync(certpath, msg.cert);
+    if(topic == '/strmv1/gencert/cert/' + profile.nodeid) {
+        var certpath = format('../pki/certs/{nodeid}__.crt', profile);
+        fs.writeFileSync(certpath, msg.cert);
+    }
 });
 
 var csrcmd = format(csrcmdtmpl, profile);
